@@ -57,6 +57,7 @@
                 <div class="container">
                     <h1>Sign Up</h1>
                     <br />
+                    <h4>Personal Details</h4>
                     <hr />
                     <!-- Full Name -->
                     <div class="input-group">
@@ -74,24 +75,61 @@
                       </div>
                       <input type="text" class="form-control" aria-label="Sizing example input"/>
                     </div>
-                    <!-- Account Type -->
+                    <!-- Gender -->
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                        <label class="input-group-text" for="inputGroupSelect01">Gender</label>
                       </div>
-                      <select class="custom-select" id="drpdwnAccType" runat="server">
+                      <select class="custom-select" id="drpdwnGender" runat="server">
                         <option selected>Choose...</option>
-                        <option value="Lender">Lend My car to Xenos</option>
-                        <option value="Lender">Lend A car From Xenos</option>
+                        <option value="Lender">Female</option>
+                        <option value="Lender">Male</option>
                       </select>
                     </div>
                     <!-- Email Address -->
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+                        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
                       </div>
                       <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="emailHelp" />
                     </div>
+                    <!-- Address -->
+                    <h4>Address</h4>
+                    <hr />
+                    <div id="addressSection" runat="server">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">House Number</span>
+                                    </div>
+                                    <input runat="server" type="text" id="txtHouseNumber" aria-label="First name" class="form-control" />
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Street Name</span>
+                                    </div>
+                                    <input runat="server" type="text" id="txtStreetName" aria-label="First name" class="form-control" />
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Town</span>
+                                    </div>
+                                    <select class="custom-select" id="drpdwnTown">
+                                        <option selected>Choose Town...</option>
+                                        <option value="Vannderbijl">Vanderbijlpark</option>
+                                        <option value="Vereeneging">Vereeneging</option>
+                                        <option value="Meyerton">Meyerton</option>
+                                        <option value="Sasol">SasolBurg</option>
+                                    </select>                              
+                               </div>
+                               <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Postal Code</span>
+                                    </div>
+                                    <input runat="server" type="text" id="txtZipCode" aria-label="First name" class="form-control"/>
+                               </div>
+
+                         </div>
+                    <br />
+                    <h4>Account Security</h4>
+                    <hr />
                     <!-- Password & Confirm -->
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -104,15 +142,17 @@
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
-                          <input type="checkbox" aria-label="Checkbox for following text input"/>
+                          <input type="checkbox" aria-label="Checkbox for following text input" id="btnAgree" onclick="AgreeToTerms()"/>
                         </div>
                       </div>
                       <input disabled type="text" class="form-control" aria-label="Text input with checkbox" value="Accept the term & conditions."/>
                         <!-- Button show T's & C's -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#staticBackdrop">
                           Show T's & C's
                         </button>
                     </div>
+
+                <button type="button" class="btn btn-primary" id="btnSignUp" runat="server" onserverclick="btnSignUp_ServerClick" >Sign Up</button>
                 </div>
                 <!-- T's & C's pop up -->
                         <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -214,15 +254,28 @@
                                         </ul>
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Understood</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Understood</button>
                               </div>
                             </div>
                           </div>
                         </div>
+
+
             </center>    
     </form>
     <script src="Assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="Assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var btnAgree = document.getElementById("btnAgree");
+        var btnSignUp = document.getElementById("btnSignUp");
+        btnSignUp.disabled = true;
+
+        function AgreeToTerms() {
+            if (btnAgree.checked)
+                btnSignUp.disabled = false;
+            else
+                btnSignUp.disabled = true;
+        }
+    </script>
 </body>
 </html>

@@ -11,7 +11,16 @@ namespace Xenos_Dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Page Load
+            
         }
+
+        protected void btnSignUp_ServerClick(object sender, EventArgs e)
+        {
+            //validate data inserted
+            //upload data inserted to database
+            //redirect to login page
+        }
+
+        protected void 
     }
 }

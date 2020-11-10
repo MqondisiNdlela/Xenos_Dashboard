@@ -68,6 +68,6 @@ namespace Xenos_Dashboard.Models
             {
                 throw new Exception("Connection string is null or empty, Set connection string 1st with DatabaseHanlder.setSqlConnStr(String str)");
             }
-        }
+        } //
     }
 }
